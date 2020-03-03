@@ -1,0 +1,8 @@
+Joe	Diagnosis is Throat Infection
+Alex	Diagnosis is Fever
+John	Diagnosis is Back Pain
+Sarah	Diagnosis is Cold
+Bob	Diagnosis is Diabetes	
+Frank	Diagnosis is Cough
+Sam	Diagnosis is Broken Arm 
+Danny	Diagnosis is Cold Sore
