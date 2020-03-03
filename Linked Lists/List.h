@@ -1,9 +1,12 @@
+#include <string>
+using namespace std;
 class List
 {
 private:
     typedef struct node
     {
-        int info;
+        string name;
+        string info;
         node *link;
     }*nodePtr;
     
@@ -13,12 +16,13 @@ private:
     
 public:
     List(); // default constructor
-    void addNode(int);
-    void deleteNode(int);
+    void addNode(string,string);
+    void setAsCircularList();
+    void deleteNode(string);
     void print();
     void printFirstNode();
     void printLastNode();
-    void searchList(int x);
+    void searchList(string x);
     void deleteList();
 
 };

@@ -1,30 +1,32 @@
 #include <iostream>
+#include <fstream>
 #include "List.h"
 using namespace std;
-
 int main()
 {
-    int x, numOfNodes;
+    string x;
     
+    fstream infile;
+    infile.open("patients.txt");
+    if (!infile){ cout<<"error opening file"; return 0;}
     
-    cout<<"How many items will be in your list: ";
-    cin>>numOfNodes;
-    cout<<endl;
+   
     
-
     List George;
     
-    for(int i=1; i<= numOfNodes; i++)
+    
+    while(!infile.eof())
     {
-        
-        int newItem;
-        cout<<"Enter a new item to be added to your list: ";
-        cin>>newItem;
-        George.addNode(newItem);
+        string addName;
+        infile>>addName;
+        string addInfo;
+        infile>> addInfo;
+        George.addNode(addName, addInfo);
         cout<<"\nList:"<<endl;
         George.print();
         cout<<endl;
     }
+    
     
     cout<<"\n Final List:"<<endl;
     George.print();

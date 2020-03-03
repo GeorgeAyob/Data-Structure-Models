@@ -9,25 +9,29 @@ List::List()
     temp=NULL;
 }
 
-void List::addNode(int addData)
+void List::addNode(string addName, string addInfo)
 {
     nodePtr n;             // create a new node poiter called n
     n = new node;          // make it point to a new node
-    n->info = addData;   // add data to the node
-    n->link = NULL;     // set it equal to 0 to make it signfy it is the last node
+    n->name = addName;   // add data to the node
+    n->info = addInfo;
+    n->link = head;     // set it equal to 0 to make it signfy it is the last node
     
     if (head == NULL)
     {
         head = n;          // if there is no list created, make head equal to the first new node
+        head->link = head;
+        return;
     }
     
     else if(head != NULL)                      // while head does not equal last element in list
     {
-        curr = head;                         // make curr point to the first element
+         curr = head;                         // make curr point to the first element
         
-        while(curr->link != NULL)
+        while(true)
         {                                   // and if curr is not pointing at the last element
             curr = curr-> link;            // make it point to the next node in the list
+            if(curr->link == head) break;
         }
         
         curr-> link = n;                 // when it reaches the last element, insert the new node made n
@@ -37,11 +41,10 @@ void List::addNode(int addData)
     else
         cout<< " There is an error";
     
-    
  
 }
 
-void List::deleteNode(int delData)
+void List::deleteNode(string delData)
 {
     nodePtr delPtr = NULL;
     temp = head;
@@ -78,14 +81,22 @@ void List::print()
 {
     curr=head;
     
-    while(curr != NULL)
+    while(true)
     {
-        cout << curr-> info << endl;
+        cout << curr-> name;
+        cout << " is diagnosed with " << curr-> info <<endl;
         curr = curr-> link;
+        if(curr == head) break;
     }
     
-    if(head == NULL)
-        cout<<" List is empty"<< endl;
+
+    
+    
+    
+    if(head == NULL){
+        cout<<"List is empty"<< endl;
+    }
+    
 }
 
 void List::printFirstNode()
@@ -104,14 +115,14 @@ void List::printLastNode()
     cout<< "The Last  node in the list is equal to: " << curr->info<<endl;
 }
 
-void List::searchList(int x)
+void List::searchList(string x)
 {
     curr=head;
     
-    while(curr->link != NULL && curr->info !=x)
+    while(curr->link != head && curr->info !=x)
         curr= curr->link;
     
-    if(curr->link == NULL)
+    if(curr->link == head)
     {
         cout<< "The item "<< x << " was not found in the list"<<endl;
     }
@@ -126,6 +137,12 @@ void List::deleteList()
     {
         temp = head; //set temp to the current node
         head = head->link; //advance first to the next node
-        delete temp; //deallocate the memory occupied by temp
     }
 }
+
+
+
+
+    
+
+
