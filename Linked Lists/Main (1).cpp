@@ -1,44 +1,35 @@
 #include <iostream>
-#include <fstream>
 #include "List.h"
 using namespace std;
+
 int main()
 {
-    string x;
-    int counter =0;
+    int x, numOfNodes;
     
-    fstream infile;
-    infile.open("patients.txt");
-    if (!infile){ cout<<"error opening file"; return 0;}
     
+    cout<<"How many items will be in your list: ";
+    cin>>numOfNodes;
+    cout<<endl;
+    
+
     List George;
     
-    while(!infile.eof())
+    for(int i=1; i<= numOfNodes; i++)
     {
-        char a;
- Loop:  cout<<"Would you like to add a patient to the list? \n Put 'y' for Yes \n Put 'n' for No "<<endl;
-        cin>>a;
         
-        if(a =='n') break;
-        else if (a != 'y'){ cout<< "Invalid Command"<<endl;; goto Loop;}
-        
-        string addName;
-        infile>>addName;
-        string addInfo;
-        infile>> addInfo;
-        George.addNode(addName, addInfo);
+        int addData;
+        cout<<"Enter a new item to be added to your list: ";
+        cin>>addData;
+        George.addNode(addData);
         cout<<"\nList:"<<endl;
         George.print();
         cout<<endl;
-        counter++;
     }
     
     cout<<"\n Final List:"<<endl;
     George.print();
     
-    cout<<"\n Total patients seen: "<<counter;
-
-    cout<<"\n \n Enter an item to search in the list: ";
+    cout<<"\nEnter an item to search in the list: ";
     cin>>x;
     George.searchList(x);
     
@@ -52,3 +43,123 @@ int main()
     
 }
 
+/*
+ How many items will be in your list: 10
+ 
+ Enter a new item to be added to your list: 1
+ 
+ List:
+ 1
+ 
+ Enter a new item to be added to your list: 2
+ 
+ List:
+ 1
+ 2
+ 
+ Enter a new item to be added to your list: 3
+ 
+ List:
+ 1
+ 2
+ 3
+ 
+ Enter a new item to be added to your list: 4
+ 
+ List:
+ 1
+ 2
+ 3
+ 4
+ 
+ Enter a new item to be added to your list: 5
+ 
+ List:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 
+ Enter a new item to be added to your list: 6
+ 
+ List:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 
+ Enter a new item to be added to your list: 7
+ 
+ List:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 
+ Enter a new item to be added to your list: 8
+ 
+ List:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 
+ Enter a new item to be added to your list: 9
+ 
+ List:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+ 
+ Enter a new item to be added to your list: 10
+ 
+ List:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+ 10
+ 
+ 
+ Final List:
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+ 10
+ 
+ Enter an item to search in the list: 5
+ The item 5 was found in the list
+ 
+ Enter an item to search in the list: 15
+ The item 15 was not found in the list
+ 
+ Final List after delete list function:
+
+ */
