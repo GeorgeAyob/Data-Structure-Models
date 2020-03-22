@@ -41,9 +41,9 @@ int main()
     stack1.fullstack(u);
     stack1.initializeStack();
     stack1.push("Dogs");
-    stack1.push("Dogs");
     stack1.push("Cats");
-    stack1.push("Rats");
+    stack1.push("Spaghetti");
+    stack1.push("Meatballs");
     cout<<"Stack:"<<endl;
     stack1.printStack();
     cout<<"Top of stack: "<<stack1.top()<<endl;
